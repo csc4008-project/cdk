@@ -9,4 +9,4 @@ cdk-deploy:
     - npm install --progress=false
     - npm run build
     - npm run cdk bootstrap
-    - npm run cdk deploy --require-approval never
+    - npm run cdk deploy --require-approval=never
