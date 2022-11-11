@@ -7,5 +7,5 @@ cdk-deploy:
     - 'curl --location --header "PRIVATE-TOKEN: $ARTIFACT_TOKEN" "$ARTIFACT_DOWNLOAD_URL"'
     - npm install --progress=false
     - npm run build
-    - cdk bootstrap
-    - cdk deploy
+    - npm run cdk bootstrap
+    - npm run cdk deploy
