@@ -3,9 +3,12 @@ cdk-deploy:
   image: node:16-alpine
   stage: deploy
   script:
-    - apk --no-cache add curl
-    - 'curl --location --header "PRIVATE-TOKEN: $ARTIFACT_TOKEN" "$ARTIFACT_DOWNLOAD_URL"'
     - npm install --progress=false
     - npm run build
     - npm run cdk bootstrap
     - npm run cdk deploy
+  needs:
+    - project: $UI_UPSTREAM_PROJECT
+      job: $UI_UPSTREAM_JOB
+      ref: $UI_UPSTREAM_REF
+      artifacts: true
