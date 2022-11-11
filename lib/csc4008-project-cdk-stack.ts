@@ -10,8 +10,8 @@ export class Csc4008ProjectCdkStack extends cdk.Stack {
 
     const cloudFrontToS3 = new CloudFrontToS3(this, 'ui-source', {})
 
-    const deployment = new BucketDeployment(this, 'deploy-ui-source', {
-      sources: [ Source.asset(path.join(__dirname, 'csc4008-project-ui')) ],
+    new BucketDeployment(this, 'deploy-ui-source', {
+      sources: [ Source.asset(path.join(__dirname, '../csc4008-project-ui')) ],
       destinationBucket: cloudFrontToS3.s3BucketInterface,
     });
   }
