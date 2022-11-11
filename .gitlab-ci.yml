@@ -1,0 +1,11 @@
+cdk-deploy:
+  # Use Node 16 on Alpine
+  image: node:16-alpine
+  stage: deploy
+  script:
+    - apk --no-cache add curl
+    - 'curl --location --header "JOB-TOKEN: $CI_JOB_TOKEN" "$ARTIFACT_DOWNLOAD_URL"'
+    - npm install --progress=false
+    - npm run build
+    - cdk bootstrap
+    - cdk deploy
